@@ -1,4 +1,3 @@
-
 # DSA in C++: A Journey Through Pain and Pointers
 
 A collection of Data Structures and Algorithms implemented in C++ because apparently, solving problems in Python wasn't masochistic enough.
@@ -45,10 +44,10 @@ Why? Cuz I hate myself! Also because:
 
 ```bash
 # Clone this repository (and your sanity)
-git clone https://github.com/your-username/dsa-cpp-pain.git
+git clone https://github.com/NinjaTech404/DSA.git
 
 # Navigate to the directory of regrets
-cd dsa-cpp-pain
+cd DSA
 
 # Compile everything (pray to the C++ gods)
 g++ -std=c++17 -Wall -Wextra -pedantic -o my_regret main.cpp
