@@ -1,6 +1,5 @@
-#include<iostream>
-using std::cout;
+#include<includes.hpp>
 int main(){
-  cout << "Hello, DSA!\n";
+  super::console("hello");
   return 0;
 }
