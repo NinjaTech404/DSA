@@ -11,7 +11,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED OFF)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(MAIN ${CMAKE_SOURCE_DIR}/src/main.cpp)
-add_executable(MyApp ${MAIN})
+add_executable(MyRegrets ${MAIN})
 
 include_directories(${CMAKE_SOURCE_DIR}/src)
 
