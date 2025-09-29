@@ -6,6 +6,10 @@ project(
   LANGUAGES CXX
 )
 
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED OFF)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 set(MAIN ${CMAKE_SOURCE_DIR}/src/main.cpp)
 add_executable(MyApp ${MAIN})
 
