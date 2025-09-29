@@ -1,5 +1,1 @@
-#include<includes.hpp>
-int main(){
-  super::console("hello");
-  return 0;
-}
+#include<DS/array/array.h>
