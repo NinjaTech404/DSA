@@ -1,3 +1,0 @@
-/home/paradox/Projects/c++/build/CMakeFiles/MyApp.dir
-/home/paradox/Projects/c++/build/CMakeFiles/edit_cache.dir
-/home/paradox/Projects/c++/build/CMakeFiles/rebuild_cache.dir
