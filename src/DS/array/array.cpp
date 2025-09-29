@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <string>
 #include <array> // The header for the gilded cage we call std::array
