@@ -47,6 +47,9 @@ int main() {
         arrayOfRegrets[i] = i * i; // Filling our regrets with the haunting square of their index.
     }
 
+    for (int i = 0; i < std::size(arrayOfRegrets); i++) {
+        arrayOfRegrets[i] = i * i; // Filling our regrets with the haunting square of their index.
+    }
     // 3.2. Accessing The Elements: Peering into the abyss.
     float anElementOfPain = forgottenConstants[1]; // Plucking a single constant from the void.
     std::cout << "A single element of pain: " << anElementOfPain << std::endl;
