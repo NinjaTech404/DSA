@@ -1,2 +1,4 @@
-build
+./build
+.main.cpp.log.md5
+run.sh
 
