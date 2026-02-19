@@ -55,5 +55,5 @@ cd build
 make
 
 # Run and embrace the segmentation faults
-./MyRegrets
+./main
 
