@@ -25,7 +25,9 @@ set(MAIN ${CMAKE_SOURCE_DIR}/src/main.cpp)
 add_executable(main ${MAIN})
 
 
-include_directories(${CMAKE_SOURCE_DIR}/src)
+include_directories(${CMAKE_SOURCE_DIR}/src) # Source Directory
+include_directories(${CMAKE_SOURCE_DIR}/src/DS/node) # Node Data Structure Header
+include_directories(${CMAKE_SOURCE_DIR}/src/DS/array) # C++ Style Array Data Structure Header
 
 message("-- => project codebase structure set!")
 

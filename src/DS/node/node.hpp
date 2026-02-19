@@ -14,7 +14,10 @@
  * @date 2026
  */
 
-#pragma once
+
+#ifndef NODE_HPP
+#define NODE_HPP
+
 #include <cstddef> // For size_t
 #include <ostream> // For stream output operator
 #include <string>  // For NodeExcept class usage
@@ -323,3 +326,5 @@ public:
 };
 
 #include "node.cpp" // Include the implementation file
+
+#endif
