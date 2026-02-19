@@ -1,7 +1,0 @@
-/home/paradox/Projects/DSA/build/CMakeFiles/main.dir
-/home/paradox/Projects/DSA/build/CMakeFiles/run.dir
-/home/paradox/Projects/DSA/build/CMakeFiles/package.dir
-/home/paradox/Projects/DSA/build/CMakeFiles/package_source.dir
-/home/paradox/Projects/DSA/build/CMakeFiles/test.dir
-/home/paradox/Projects/DSA/build/CMakeFiles/edit_cache.dir
-/home/paradox/Projects/DSA/build/CMakeFiles/rebuild_cache.dir
