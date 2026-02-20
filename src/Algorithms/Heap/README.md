@@ -103,5 +103,5 @@ The implementation uses `size_t` for indices with additional bounds checking to 
 ---
 
 <div align="center">
-  <sub>Built with ❤️ for efficient sorting</sub>
+  <sub>Built by KADHIM SHAKIR for education purposes</sub>
 </div>
