@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
 int main() {
-  cout << "Edit the main.cpp file" << endl;
+  cout << "Edit src/main.cpp\n";
   return 0;
 }

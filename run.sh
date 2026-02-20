@@ -3,10 +3,6 @@ CMAKE_COLOR_DIAGS=ON
 CURRENT_DIR=$(pwd)
 LOG_FILE=".main.cpp.log.md5"
 
-if [ ! -e ${CURRENT_DIR}/build ]; then
-  cmake -S $CURRENT_DIR -B build -G Ninja -Wdev
-fi
-
 execute() {
   echo -e "\e[1;32m==> \e[0mProcessing the target..."
   sleep 0.2
@@ -30,6 +26,10 @@ echo -e "\e[1;34m==> \e[0mWaiting..."
 sleep 0.2
 
 while $true; do
+  if [ ! -e ${CURRENT_DIR}/build ]; then
+    cmake -S $CURRENT_DIR -B build -G Ninja -Wdev
+  fi
+
   if [ -e $LOG_FILE ]; then
     str_old="$(cat $LOG_FILE)"
     str_new="$(enc dgst --md5 -fi ${CURRENT_DIR}/src/main.cpp)"
