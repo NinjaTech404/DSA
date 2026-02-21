@@ -1,107 +1,173 @@
-# Heap Sort Implementation in C++
+# Heap Sort Implementation
 
-A generic, template-based implementation of the Heap Sort algorithm featuring max heap construction and in-place sorting.
+A comprehensive C++ template library for heap sort algorithm with both max-heap and min-heap sorting capabilities. This implementation provides generic, type-safe heap operations with efficient O(n log n) performance.
 
-## 📋 Table of Contents
-- [Overview](#overview)
-- [Algorithm](#algorithm)
-- [Implementation Details](#implementation-details)
-- [Complexity Analysis](#complexity-analysis)
-- [Usage](#usage)
-- [Example](#example)
-- [Features](#features)
+## 📋 Features
 
-## 🔍 Overview
+- **Generic Implementation**: Template-based design works with any data type
+- **Dual Heap Support**: Both max-heap (ascending) and min-heap (descending) sorting
+- **In-Place Sorting**: No additional memory allocation required
+- **Namespace Protection**: All functions wrapped in `heap` namespace to prevent naming conflicts
+- **C++17 Compatible**: Utilizes modern C++ features
+- **Well Documented**: Clear comments explaining algorithm logic
 
-Heap Sort is a comparison-based sorting algorithm that uses a binary heap data structure. It divides its input into a sorted and an unsorted region and iteratively shrinks the unsorted region by extracting the largest element and moving it to the sorted region.
+## 🚀 Quick Start
 
-## 📊 Algorithm
+### Prerequisites
+- C++17 or later compiler
+- Standard Template Library (STL)
 
-The implementation consists of three main functions:
+### Installation
 
-### 1. `swap(T& a, T& b)`
-Utility function to exchange two elements.
-
-### 2. `heapify(T arr[], size_t size, size_t root)`
-Maintains the max heap property for a subtree rooted at given index.
-
-### 3. `heapSort(T arr[], size_t size)`
-Orchestrates the sorting process:
-- Builds a max heap from the input array
-- Repeatedly extracts the maximum element
-
-## 🏗️ Implementation Details
-
+1. Download both `heap.hpp` and `heap.cpp` files
+2. Include the header in your source file:
 ```cpp
-// Core functions:
-template<class T> void swap(T& a, T& b);
-template<class T> void heapify(T arr[], size_t size, size_t root);
-template<class T> void heapSort(T arr[], size_t size);
+#include "heap.hpp"
 ```
 
-### Heapify Process
-- Compares root with its left and right children
-- Swaps with the largest child if necessary
-- Recursively heapifies the affected subtree
-
-### Heap Construction
-- Starts from the lowest non-leaf nodes: `size/2 - 1`
-- Works bottom-up to build the max heap
-
-## ⏱️ Complexity Analysis
-
-| Operation | Time Complexity | Space Complexity |
-|-----------|----------------|------------------|
-| Heapify | O(log n) | O(log n) - recursive call stack |
-| Build Heap | O(n) | O(1) - in-place |
-| Heap Sort | O(n log n) | O(1) - in-place |
-
-## 💻 Usage
+### Basic Usage
 
 ```cpp
 #include <iostream>
+#include "heap.hpp"
 
 int main() {
-    // Example with integers
-    int numbers[] = {12, 11, 13, 5, 6, 7};
-    size_t size = sizeof(numbers) / sizeof(numbers[0]);
+    // Example with integer array
+    int numbers[] = {64, 34, 25, 12, 22, 11, 90};
+    size_t size = std::size(numbers);
     
-    heapSort(numbers, size);
+    // Max-heap sort (ascending order)
+    heap::heap_sort(numbers, size);
     
-    // Works with any comparable type
-    double decimals[] = {3.14, 2.71, 1.41, 1.73};
-    heapSort(decimals, 4);
+    std::cout << "Sorted in ascending order: ";
+    for(auto num : numbers) {
+        std::cout << num << " ";
+    }
+    // Output: 11 12 22 25 34 64 90
+    
+    // Reset array for min-heap example
+    int values[] = {64, 34, 25, 12, 22, 11, 90};
+    size = std::size(values);
+    
+    // Min-heap sort (descending order)
+    heap::min_heap_sort(values, size);
+    
+    std::cout << "\nSorted in descending order: ";
+    for(auto val : values) {
+        std::cout << val << " ";
+    }
+    // Output: 90 64 34 25 22 12 11
     
     return 0;
 }
 ```
 
-## 📝 Example
+## 📚 API Reference
 
-**Input:** `[12, 11, 13, 5, 6, 7]`
+### Namespace: `heap`
 
-**Process:**
-1. Build max heap: `[13, 11, 12, 5, 6, 7]`
-2. Swap root with last: `[7, 11, 12, 5, 6, 13]`
-3. Heapify reduced heap...
-4. Continue until sorted
+#### `void swap(T& a, T& b)`
+Swap two elements of any type.
 
-**Output:** `[5, 6, 7, 11, 12, 13]`
+#### `void heapify(T arr[], size_t size, size_t root)`
+Maintain max-heap property for a subtree.
+- `arr[]`: Array representing the heap
+- `size`: Size of the heap
+- `root`: Index of the root node to heapify
 
-## ✨ Features
+#### `void heap_sort(T arr[], size_t size)`
+Sort array in ascending order using max-heap.
+- `arr[]`: Array to sort
+- `size`: Number of elements in array
 
-- **Generic Implementation**: Works with any data type supporting `operator>`
-- **In-place Sorting**: No additional memory allocation
-- **Template-based**: Compile-time polymorphism
-- **Clear Documentation**: Well-commented code for educational purposes
-- **Size-safe**: Uses `size_t` for array indexing
+#### `void min_heapify(T arr[], size_t size, size_t root)`
+Maintain min-heap property for a subtree.
+- `arr[]`: Array representing the heap
+- `size`: Size of the heap
+- `root`: Index of the root node to heapify
 
-## ⚠️ Note
+#### `void min_heap_sort(T arr[], size_t size)`
+Sort array in descending order using min-heap.
+- `arr[]`: Array to sort
+- `size`: Number of elements in array
 
-The implementation uses `size_t` for indices with additional bounds checking to handle unsigned integer wrap-around safely. This ensures robust behavior even with large arrays.
+## 🔧 Algorithm Complexity
 
----
+| Operation | Time Complexity | Space Complexity |
+|-----------|----------------|------------------|
+| Heapify | O(log n) | O(1) |
+| Build Heap | O(n) | O(1) |
+| Heap Sort | O(n log n) | O(1) |
 
-<div align="center">
-  <sub>Built by KADHIM SHAKIR for educational purposes</sub>
-</div>
+## 💡 How It Works
+
+### Max-Heap Sort (Ascending)
+1. **Build Max-Heap**: Rearrange array into a max-heap
+2. **Sort**: Repeatedly swap root (largest) with last element and heapify reduced heap
+
+### Min-Heap Sort (Descending)
+1. **Build Min-Heap**: Rearrange array into a min-heap
+2. **Sort**: Repeatedly swap root (smallest) with last element and heapify reduced heap
+
+## 🎯 Use Cases
+
+- **Priority Queues**: Foundation for priority queue implementations
+- **Scheduling Algorithms**: Task scheduling based on priority
+- **Data Stream Processing**: Maintaining running median or top-k elements
+- **Graph Algorithms**: Dijkstra's shortest path, Prim's minimum spanning tree
+- **Embedded Systems**: Memory-efficient in-place sorting
+
+## ⚠️ Important Notes
+
+- The array parameter must not be a pointer when using `std::size()` - use array reference or pass size explicitly
+- Functions modify the original array in-place
+- Works with any type that supports comparison operators (`>`, `<`)
+
+## 📁 File Structure
+
+```
+heap/
+├── heap.hpp          # Header file with declarations and documentation
+├── heap.cpp          # Implementation file with algorithm logic
+├── README.md         # This documentation
+└── examples/
+    └── demo.cpp      # Usage examples
+```
+
+## 🔄 Comparison with Standard Sort
+
+| Aspect | Heap Sort | std::sort |
+|--------|-----------|-----------|
+| Time Complexity | O(n log n) | O(n log n) |
+| Space Complexity | O(1) | O(log n) |
+| Stability | Unstable | Unstable |
+| Use Case | Memory-constrained | General purpose |
+
+## 🐛 Known Limitations
+
+- Not stable (equal elements may not preserve original order)
+- Not cache-friendly compared to quicksort
+- Requires explicit size parameter (no automatic array size deduction for pointers)
+
+## 📝 License
+
+MIT License - feel free to use in personal and commercial projects
+
+## 👤 Author
+
+**KADHIM SHAKIR**
+- Email: kadhimshakir@yahoo.com
+- GitHub: [https://github.com/NinjaTech404](https://github.com/NinjaTech404)
+
+## 🙏 Acknowledgments
+
+- C++ standards committee for template support
+- Open source community for inspiration
+
+## 📊 Version History
+
+- **1.0.0** (2026)
+  - Initial release
+  - Max-heap and min-heap implementations
+  - Template-based generic design
+  - Comprehensive documentation
