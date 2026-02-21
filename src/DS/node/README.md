@@ -29,8 +29,6 @@ A robust, production-ready C++ template class for creating and managing nodes in
 
 ```fish
 # 📁 Project Structure
-
-```
 ├── examples/
 │   └── demo.cpp
 ├── node.cpp
