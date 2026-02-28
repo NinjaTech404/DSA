@@ -29,7 +29,8 @@ include_directories(${CMAKE_SOURCE_DIR}/src) # Source Directory
 include_directories(${CMAKE_SOURCE_DIR}/src/DS/node) # Node Data Structure Header
 include_directories(${CMAKE_SOURCE_DIR}/src/DS/array) # C++ Style Array Data Structure Header
 include_directories(${CMAKE_SOURCE_DIR}/src/Algorithms/Heap) # Heap Sorting Algorithms
-include_directories(${CMAKE_SOURCE_DIR}/src/Algorithms/Linear) # Linear Sorting/Sorting Algorithms
+include_directories(${CMAKE_SOURCE_DIR}/src/Algorithms/Linear) # Linear Search Algorithms
+include_directories(${CMAKE_SOURCE_DIR}/src/Algorithms/Divide_and_Conquer/Search/Binary) # Binary Search Algorithms
 
 message("-- => project codebase structure set!")
 

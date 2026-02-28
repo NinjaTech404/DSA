@@ -2,7 +2,7 @@
 
 /* >-----> 1-1. Non-Reccursive Linear Search ALgorithms <-----<*/
 
-//=> 1-1-1. Normal Linear Search || best = average = worst = O(n), Space Complexity = O(n)
+//=> 1-1-1. Normal Linear Search || best = average = worst = O(n), Space Complexity = O(1)
 template <class T, size_t N>
 size_t linear_search(T (&arr)[N], T key){ //=> (&arr)[N] is an array reference not a pointer
   for(size_t i = 0; i < N; i++){
@@ -14,7 +14,7 @@ size_t linear_search(T (&arr)[N], T key){ //=> (&arr)[N] is an array reference n
 
 /* >-----> 1-2. Reccursive Linear Search ALgorithms <-----<*/
 
-//=> 1-2-1. Normal Linear Search || best = average = worst = O(n), Space Complexity = O(n)
+//=> 1-2-1. Normal Linear Search || best = average = worst = O(n), Space Complexity = O(1)
 template <class T> //=> Reccursive Linear Search Algorithm
 size_t rec_linear_search_algo(T* arr, size_t N, T key){
   if(--N != LIMIT && N >= 0){
