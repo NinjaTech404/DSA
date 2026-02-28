@@ -1,29 +1,30 @@
-/* >====> Non-Rcursive Linear Search Function <====<*/
-template<class T>
-size_t non_rec_linear_search(T* arr, T key, size_t  N){
-  bool is_found = false;
-  size_t i;
-  for(i = 0; i < N; i++){
-    if(arr[i] == key){
-      is_found = true;
-      break;
-    }
-    continue;
-  } 
-  return is_found? i : LIMIT;
+/* >=====> 1. Linear Search Algorithms <=====<*/
+
+/* >-----> 1-1. Non-Reccursive Linear Search ALgorithms <-----<*/
+
+//=> 1-1-1. Normal Linear Search || best = average = worst = O(n), Space Complexity = O(n)
+template <class T, size_t N>
+size_t linear_search(T (&arr)[N], T key){ //=> (&arr)[N] is an array reference not a pointer
+  for(size_t i = 0; i < N; i++){
+    if(arr[i] == key){ return i; }
+  }
+  return LIMIT;
 }
 
-/* >====> Rcursive Linear Search Function <====<*/
-template<class T>
-size_t rec_linear_search (T* arr, T key, size_t N){
-  if(--N >= 0 && N != LIMIT){
-    if (arr[N] == key){
-      return N;
-    }
+
+/* >-----> 1-2. Reccursive Linear Search ALgorithms <-----<*/
+
+//=> 1-2-1. Normal Linear Search || best = average = worst = O(n), Space Complexity = O(n)
+template <class T> //=> Reccursive Linear Search Algorithm
+size_t rec_linear_search_algo(T* arr, size_t N, T key){
+  if(--N != LIMIT && N >= 0){
+    if (arr[N] == key) { return N; }
+    else { return rec_linear_search_algo(arr, N, key); }
   }
-  else { 
-    throw std::out_of_range("Key not found or index went out of range!");
-  }
-  return rec_linear_search(arr, key, N);
+  return LIMIT;
 }
 
+template <class T, size_t N> //=> A Wrapper Function for Better Experience
+size_t rec_linear_search (T (&arr)[N], T key){
+  return rec_linear_search_algo(arr, N, key);
+}
