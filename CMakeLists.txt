@@ -1,13 +1,21 @@
 # => Setting Cmake Versions
 cmake_minimum_required(VERSION 3.10...4.1.2)
 
-message("-- => cmake version set to (3.10 <=> 4.1.2)!")
+message("-- => cmake version set => (3.10 <=> 4.1.2)!")
 
 # => Peoject Details
+
+# => Version
+set(MAJOR  0)
+set(MINOR 61)
+set(PATCH  2)
+
+message("-- => project version set => v${MAJOR}.${MINOR}.${PATCH}")
+
 project(
   My_DSA_Project
   DESCRIPTION "A C++ REPO for studying Data Structures and Algorithms."
-  VERSION 0.61.0
+  VERSION ${MAJOR}.${MINOR}.${PATCH}
   LANGUAGES CXX
 )
 
