@@ -6,10 +6,28 @@ LOG_FILE=".main.cpp.log.md5"
 execute() {
   echo -e "\e[1;32m==> \e[0mProcessing the target..."
   sleep 0.2
-  if cmake --build build --target run 2>/dev/null; then
-    echo -e "\e[1;32m==> \e[0mTarget executed successfully!"
+
+  # Build the target first, then run it directly
+  if cmake --build build; then
+    # Find and run the executable directly (not through cmake run target)
+    EXECUTABLE=$(find build -type f -executable -name "main" -o -name "*.exe" | head -1)
+
+    if [ -n "$EXECUTABLE" ]; then
+      echo -e "\e[1;33m==> \e[0mRunning program..."
+      sleep 0.2
+      # Run directly without any input redirection
+      "$EXECUTABLE"
+      sleep 0.2
+      if [ $? -eq 0 ]; then
+        echo -e "\e[1;32m==> \e[0mTarget executed successfully!"
+      else
+        echo -e "\e[1;31m==> \e[0mFailed to execute the target!"
+      fi
+    else
+      echo -e "\e[1;31m==> \e[0mExecutable not found!"
+    fi
   else
-    echo -e "\e[1;31m==> \e[0mFaild to execute the target!"
+    echo -e "\e[1;31m==> \e[0mFailed to build the target!"
   fi
 }
 

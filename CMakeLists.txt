@@ -7,7 +7,7 @@ message("-- => cmake version set to (3.10 <=> 4.1.2)!")
 project(
   My_DSA_Project
   DESCRIPTION "A C++ REPO for studying Data Structures and Algorithms."
-  VERSION 1.0.0
+  VERSION 0.61.0
   LANGUAGES CXX
 )
 

@@ -19,18 +19,10 @@
  * License: MIT
  */
 
-template<class T>
-/* >=====> Dedicated Swap Function For Heap <=====< */
-void swap(T& a, T& b){
-  T temp = a;
-  a = b;
-  b = temp;
-}
-
 /* >=====> Max Heapify <=====< */
 template<class T>
-void heapify(T arr[], size_t size, size_t root){ //=> effects only one single subtree
-  size_t largest, left, right;
+void heapify(T arr[], size_t N, size_t root){ //=> effects only one single subtree
+  size_t largest, left, right, size = N;
   largest = root; //=> largest is the root node index
   left    = 2 * root + 1; //=> left node index 
   right   = 2 * root + 2; //=> right node index
@@ -44,7 +36,7 @@ void heapify(T arr[], size_t size, size_t root){ //=> effects only one single su
   }
 
   if(largest != root){ 
-    swap(arr[root], arr[largest]); //=> swapping root with largest value of a subtree
+    std::swap(arr[root], arr[largest]); //=> swapping root with largest value of a subtree
 
     heapify(arr, size, largest); //=> recursively heapifying the subtree 
   } 
@@ -52,26 +44,44 @@ void heapify(T arr[], size_t size, size_t root){ //=> effects only one single su
 
 /* >=====> Max Heap Sort <=====< */
 template<class T>
-void heap_sort(T arr[], size_t size){
-  
+void heap_sort(T arr[], size_t N){
+  size_t size = N; 
   //=> Heapifying all subtrees
   for(size_t i = size / 2 - 1; (i >= 0) && (i < size); --i){ //=> subtree root index = ((child index) / 2) - 1
-                                           //=> i >= 0 is always true fot size_t type, so i is wraped with (i < size)
+                               //=> i >= 0 is always true fot size_t type, so i is wraped with (i < size)
     heapify(arr, size, i); //=> heapify subtrees one by one
                            //=> from the lowest subtree level (bottom-up)
   }
 
   //=> Sorting the array
   for(size_t i = size - 1; (i >= 0) && (i < size); --i){ //=> i is the last node index
-    swap(arr[0], arr[i]); //=> swap the root with last node
+    std::swap(arr[0], arr[i]); //=> swap the root with last node
     heapify(arr, i, 0); //=> heapifying all subtrees
   }
 }
 
+template<class T, size_t N>
+void heap_sort(T (&arr)[N]){ //=> This Overloaded Version is for a predfined array
+  size_t size = N; 
+  //=> Heapifying all subtrees
+  for(size_t i = size / 2 - 1; (i >= 0) && (i < size); --i){ //=> subtree root index = ((child index) / 2) - 1
+                              //=> i >= 0 is always true fot size_t type, so i is wraped with (i < size)
+    heapify(arr, size, i); //=> heapify subtrees one by one
+                           //=> from the lowest subtree level (bottom-up)
+  }
+
+  //=> Sorting the array
+  for(size_t i = size - 1; (i >= 0) && (i < size); --i){ //=> i is the last node index
+    std::swap(arr[0], arr[i]); //=> swap the root with last node
+    heapify(arr, i, 0); //=> heapifying all subtrees
+  }
+}
+
+
 /* >=====> Min Heapify <=====< */
 template<class T>
-void min_heapify(T arr[], size_t size, size_t root){
-  size_t smallest, left, right;
+void min_heapify(T arr[], size_t N, size_t root){
+  size_t smallest, left, right, size = N;
   smallest = root; //=> initialize smallest as root
   left     = 2 * root + 1; //=> left child index
   right    = 2 * root + 2; //=> right child index
@@ -85,14 +95,15 @@ void min_heapify(T arr[], size_t size, size_t root){
   }
 
   if(smallest != root){ //=> if smallest is not root
-    swap(arr[root], arr[smallest]); //=> swap root with smallest
+    std::swap(arr[root], arr[smallest]); //=> swap root with smallest
     min_heapify(arr, size, smallest); //=> recursively heapify the affected subtree
   }
 }
 
 /* >=====> Min Heap Sort <=====< */
 template<class T>
-void min_heap_sort(T arr[], size_t size){
+void min_heap_sort(T arr[], size_t N){
+  size_t size = N;
   //=> Build min heap (rearrange array)
   for(size_t i = (size / 2) - 1; (i >= 0) && (i < size); --i){
     min_heapify(arr, size, i); //=> build min heap from bottom up
@@ -100,7 +111,22 @@ void min_heap_sort(T arr[], size_t size){
  
   //=> Extract elements from heap one by one
   for(size_t i = size - 1; (i >= 0) && (i < size); --i){
-    swap(arr[0], arr[i]); //=> move current root to end
+    std::swap(arr[0], arr[i]); //=> move current root to end
+    min_heapify(arr, i, 0); //=> call min heapify on reduced heap
+  }
+}
+
+template<class T, size_t N>
+void min_heap_sort(T (&arr)[N]){ //=> This Overloaded Version is for a predfined array
+  size_t size = N;
+  //=> Build min heap (rearrange array)
+  for(size_t i = (size / 2) - 1; (i >= 0) && (i < size); --i){
+    min_heapify(arr, size, i); //=> build min heap from bottom up
+  }
+ 
+  //=> Extract elements from heap one by one
+  for(size_t i = size - 1; (i >= 0) && (i < size); --i){
+    std::swap(arr[0], arr[i]); //=> move current root to end
     min_heapify(arr, i, 0); //=> call min heapify on reduced heap
   }
 }

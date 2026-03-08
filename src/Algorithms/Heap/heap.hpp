@@ -23,19 +23,22 @@
 #define HEAP_HPP
 
 #include <cstddef> //=> for size_t
+#include <algorithm> //=> for swap function
 
 namespace heap { //=> wraping evreything in "heap" namespace for safety
 
 //=> Forward declarations
-template<class T> void swap(T& a, T& b); //=> swap function
+template<class T> void heapify(T arr[], size_t N, size_t root); //=> heapify a single subtree
+template<class T> void heap_sort(T arr[], size_t N); //=> the actual sorting function with a ascending order
+template<class T, size_t N> void heap_sort(T (&arr)[N]); //=> This Overloaded Version is for a predfined array
 
-template<class T> void heapify(T arr[], size_t size, size_t root); //=> heapify a single subtree
-template<class T> void heap_sort(T arr[], size_t size); //=> the actual sorting function with a ascending order
 
-template<class T> void min_heapify(T arr[], size_t size, size_t root); //=> heapify a single subtree
-template<class T> void min_heap_sort(T arr[], size_t size); //=> the actual sorting function with a descending order
+template<class T> void min_heapify(T arr[], size_t N, size_t root); //=> heapify a single subtree
+template<class T> void min_heap_sort(T arr[], size_t N); //=> the actual sorting function with a descending order
+template<class T, size_t N> void min_heap_sort(T (&arr)[N]); //=> This Overloaded Version is for a predfined array
 
 #include "heap.cpp" //=> the implementaion file
 
 }
+
 #endif

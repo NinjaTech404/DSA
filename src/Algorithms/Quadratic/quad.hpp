@@ -13,9 +13,25 @@ namespace quad{
   template<class T, size_t N> //=> Worst = Average = O(n^2), Best = O(n), Space Complexity = O(1).
   void bubble_sort(T (&arr)[N]); //=> (&arr)[N] is an array reference, not an array pointer.
 
+  template<class T> //=> Worst = Average = O(n^2), Best = O(n), Space Complexity = O(1).
+  void bubble_sort(T* arr, size_t N); //=> This Overloaded Version is for manual size evaluation.
+
+
   //=> 1-2. Selection Sort Algorithm
   template<class T, size_t N> //=> Worst = Average = Best = O(n^2), Space Complexity = O(1);
   void selection_sort(T (&arr)[N]); //=> (&arr)[N] is an array reference, not an array pointer.
+
+  template<class T> //=> Worst = Average = Best = O(n^2), Space Complexity = O(1);
+  void selection_sort(T* arr, size_t N); //=> This Overloaded Version is for manual size evaluation.
+
+
+  //=> 1-3. Insertion Sort Algorithm
+  template<class T, size_t N> //=> Worst = Average = Best = O(n^2), Space Complexity = O(1).
+  void insertion_sort(T (&arr)[N]); //=> (&arr)[N] is an array reference, not an array pointer.
+
+  template<class T> //=> Worst = Average = Best = O(n^2), Space Complexity = O(1).
+  void insertion_sort(T* arr, size_t N); //=> This Overloaded Version is for manual size evaluation.
+
 
   #include "quad.cpp" //=> the implementaion file
 }
