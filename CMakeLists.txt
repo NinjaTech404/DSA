@@ -32,7 +32,6 @@ message("-- => c++ compiler details set!")
 set(MAIN ${CMAKE_SOURCE_DIR}/src/main.cpp)
 add_executable(main ${MAIN})
 
-
 include_directories(${CMAKE_SOURCE_DIR}/src) # Source Directory
 include_directories(${CMAKE_SOURCE_DIR}/src/DS/node) # Node Data Structure Header
 include_directories(${CMAKE_SOURCE_DIR}/src/DS/array) # C++ Style Array Data Structure Header
@@ -42,6 +41,11 @@ include_directories(${CMAKE_SOURCE_DIR}/src/Algorithms/Quadratic) # Quadratic Al
 include_directories(${CMAKE_SOURCE_DIR}/src/Algorithms/Divide_and_Conquer/Search/Binary) # Binary Search Algorithms
 
 message("-- => project codebase structure set!")
+
+# => Fmt set up
+add_subdirectory(${CMAKE_SOURCE_DIR}/include/fmt)
+target_link_libraries(main PRIVATE fmt::fmt)
+message("-- => fmt set!")
 
 # => Setting a target "run" for excuting the binary "main"
 add_custom_target(
